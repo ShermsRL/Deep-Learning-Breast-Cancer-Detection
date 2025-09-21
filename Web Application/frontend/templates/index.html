@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="upload-container">
+    <div class="upload-section">
+        <h2>Upload Mammography Image</h2>
+        <form id="segmentation-form" enctype="multipart/form-data">
+            <div class="file-input-wrapper">
+                <input type="file" id="image-input" name="file" accept="image/*" required>
+                <label for="image-input" class="file-input-label">
+                    Choose Mammography Image
+                </label>
+            </div>
+            <div class="preview-container" id="preview-container" style="display: none;">
+                <p id="image-preview"></p>
+            </div>
+            <button type="submit" class="analyze-btn">Analyze Image</button>
+        </form>
+    </div>
+    
+<!--    <div class="results-section" id="results-section" style="display: none;">-->
+<!--        <h3>Segmentation Results</h3>-->
+        <div class="results-container">
+<!--            <div id="results" style="display:none;">-->
+<!--              <h3>Results</h3>-->
+              <div>
+                <h4 id="seg text" style="display:none;">Segmentation Mask</h4>
+                <img id="mask_image" alt="Segmentation Mask" style="display:none;">
+              </div>
+              <div>
+                <h4 id= "overlay text" style="display:none;">Overlay</h4>
+                <img id="overlay_image" alt="Overlay Image" style="display:none;">
+              </div>
+              <div>
+                <h4 id="roi text" style="display:none;">Region of Interest</h4>
+                <img id="roi_image" alt="Cropped ROI" style="display:none;">
+              </div>
+              <div id="diagnosis_text"></div>
+<!--            </div>-->
+        </div>
+    </div>
+<!--</div>-->
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/image-upload.js') }}"></script>
+<script src="{{ url_for('static', filename='js/segmentation.js') }}"></script>
+{% endblock %}
